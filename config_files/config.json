@@ -1,0 +1,103 @@
+{
+  "name": "Model",
+  "n_gpu": 1,
+  "workers": 6,
+  "arch": {
+    "args": {
+      "type": "resnet18"
+    }
+  },
+  "data_loader": {
+    "args": {
+      "img_dir": "",
+      "train_df": "",
+      "test_df": "",
+      "included_classes": [
+      ],
+      "class_mapping": null,
+      "input_size": [
+        512,
+        512
+      ],
+      "batch_size": 8,
+      "num_workers": 4,
+      "normalize": true,
+      "mean": [
+      ],
+      "std": [
+      ],
+      "balance": true,
+      "sample_set": false,
+      "sample_size": 500,
+      "crop": false,
+      "random_crop": false,
+      "random_apply": true,
+      "transforms": {
+        "ColorJitter": {
+          "brightness": 0.1,
+          "contrast": 0.1,
+          "saturation": 0.08,
+          "hue": 0.08
+        },
+        "Pad": {
+          "padding": 20
+       },
+       "cutout": {
+          "p":0.4,
+          "scale": (0.01, 0.03)
+       }
+      }
+    }
+  },
+  "model": {
+    "num_classes": 14,
+    "layers": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "inplanes": 32,
+    "planes_per_layer": [
+      32,
+      64,
+      128,
+      128
+    ],
+    "inblock_expansion": 1,
+    "norm_type": "batchNorm",
+    "nonlinearity": "relu",
+    "downsample_type": "pool",
+    "downsample_input": true,
+    "export": false
+  },
+  "optimizer": {
+    "type": "adam",
+    "args": {
+      "lr": 0.0003,
+      "weight_decay": 0.0001
+    }
+  },
+  "loss": "BCELoss",
+  "metrics": [
+    "accuracy",
+    "loss"
+  ],
+  "lr_scheduler": {
+    "type": "StepLR",
+    "args": {
+      "step_size": 5,
+      "gamma": 0.1,
+      "max_epochs": 5
+    }
+  },
+  "trainer": {
+    "epochs": 18,
+    "save_dir": "./session",
+    "save_freq": 1,
+    "tensorboard": true,
+    "tensorboard_dir": "",
+    "write_freq": 20,
+    "save_by": "every"
+  }
+}
