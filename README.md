@@ -1,6 +1,6 @@
 <h1> Pytorch Classification Training Template </h1>
 
-A Pytroch training template to ease the processes of training.
+A Pytorch training template to ease the processes of training.
 
 <h2>Features </h2>
 
@@ -8,7 +8,7 @@ A Pytroch training template to ease the processes of training.
 * Config file allows for efficient hyperparameter tuning
 * Easily customizable Resnet style model
 * Checkpoint and log saving during training
-* Genetic dataset loader for classification
+* Generic dataset loader for classification
 * Onnx exporter with predictor
 
 <h2> Config file </h2>
@@ -122,7 +122,7 @@ A Pytroch training template to ease the processes of training.
 
 <h2> Code Examples </h2>
 
-From scratch training:
+Training from scratch:
 ```
 python train.py --config ./config_files/config.json
 ```
